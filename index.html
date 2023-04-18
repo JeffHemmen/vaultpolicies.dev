@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Policies - Code Authoring Tool</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Vault Policies</h1>
+        <button id="themeToggle">Toggle Dark/Light Mode</button>
+    </header>
+    <main>
+        <div class="container">
+            <div class="textbox-container">
+                <textarea id="input-box" class="textbox" placeholder="Enter your code here..."></textarea>
+                <div id="error-message-container" class="error-bubble hidden">Invalid input! Please remove '!' characters.</div>
+            </div>
+            <div class="textbox-container">
+                <textarea id="output-box" class="textbox" placeholder="Generated output will appear here..." readonly></textarea>
+            </div>
+        </div>
+        <p class="disclaimer">Please note: This site is in early development, and there are no guarantees about the correctness of the output.</p>
+        <div class="feedback">
+            <button id="feedbackBtn">Give Feedback</button>
+            <div id="feedbackOptions" class="hidden">
+                <p>Email: <span id="feedbackEmail">feedback@vaultpolicies.dev</span></p>
+                <p><a href="https://github.com/yourusername/yourrepository/issues" target="_blank">GitHub Issues</a></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+    </footer>
+    <script src="js/Capabilities.js"></script>
+    <script src="js/PolicyTree.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

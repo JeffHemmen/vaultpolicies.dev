@@ -68,8 +68,21 @@ main {
     margin-top: 10px;
 }
 
+/* feedback */
+
 .feedback {
-    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+#feedback-button {
+    background-color: #f0f2f5;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
 }
 
 .feedback button {
@@ -87,13 +100,60 @@ main {
 background-color: #0056b3;
 }
 
-.footer {
-font-size: 14px;
-color: #666;
-margin-top: auto;
-padding: 20px;
-width: 80%;
-text-align: center;
+#feedback-options {
+    position: absolute;
+    right: 0;
+    background-color: #f0f2f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 200px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#feedback-options p {
+    margin-bottom: 8px;
+}
+
+#feedback-options p:last-child {
+    margin-bottom: 0;
+}
+
+#feedback-options a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f9f9f9; /* Slightly different shade of gray */
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 14px;
+    color: #777; /* Less intrusive text color */
+    margin-bottom: 5px;
+    display: inline; /* Make the paragraphs inline */
+    padding: 0 10px; /* Add padding to space out the elements */
+    position: relative;
+}
+
+footer p:not(:last-child):after {
+    content: "|"; /* Add a vertical separator */
+    position: absolute;
+    right: -5px; /* Adjust the position to place the separator correctly */
+    color: #777;
+}
+
+.dark-mode footer p:not(:last-child):after {
+    color: #ccc;
 }
 
 .hidden {
@@ -101,6 +161,12 @@ display: none;
 }
 
 /* Dark Mode */
+
+.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
 .dark-mode body {
 background-color: #282c34;
 color: #f0f2f5;
@@ -116,8 +182,7 @@ border-color: #4b4d50;
 background-color: #d12a2a;
 }
 
-.dark-mode .disclaimer,
-.dark-mode .footer {
+.dark-mode .disclaimer {
 color: #adb5bd;
 }
 

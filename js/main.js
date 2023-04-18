@@ -52,17 +52,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const inputBox = document.getElementById('input-box');
     const outputBox = document.getElementById('output-box');
-    const errorBubble = document.getElementById('errorBubble');
-    const lightDarkToggle = document.getElementById('themeToggle');
+    const errorBubble = document.getElementById('error-message-container');
+    const lightDarkToggle = document.getElementById('theme-toggle');
+    const feedbackBtn = document.getElementById("feedback-button");
+
 
     const processInput = () => {
         const input = inputBox.value;
-        if (input.includes('!')) {
+        if (!validate_input(input)) {
             errorBubble.classList.remove('hidden');
         } else {
             errorBubble.classList.add('hidden');
             const pt = new PolicyTree();
-            parsePolicy(pt, input);
+            parse_policy(pt, input);
             let output = "";
             for (let p of pt.examples()) {
                 output += p + " " + pt.evaluate(p) + "\n";
@@ -76,4 +78,27 @@ document.addEventListener('DOMContentLoaded', () => {
     lightDarkToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
     });
+
+    function parse_policy(ptree, policyText) {
+        const regex = /path\s*"(.*)"\s*{\s*capabilities\s*=\s*(\[\s*".*"\s*\])\s*}/g;
+        let match;
+        while ((match = regex.exec(policyText)) !== null) {
+            const path = match[1];
+            const capabilityList = JSON.parse(match[2]);
+            const capabilities = new Set(capabilityList);
+            ptree.add_path(path, capabilities);
+        }
+    }
+
+    function validate_input(input) {
+        return true;
+    }
+
+    const feedbackOptions = document.getElementById("feedback-options");
+
+    feedbackBtn.addEventListener("click", function () {
+        feedbackOptions.classList.toggle("hidden");
+    });
+    
+
 });

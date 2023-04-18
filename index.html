@@ -3,35 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vault Policies - Code Authoring Tool</title>
+    <title>VaultPolicies.dev - HashiCorp Vault Policy Authoring Tool</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Vault Policies</h1>
-        <button id="themeToggle">Toggle Dark/Light Mode</button>
+        <h1>VaultPolicies.dev</h1>
+        <div class="feedback">
+            <button id="feedback-button">Give Feedback</button>
+            <div id="feedback-options" class="hidden">
+                <p>Email: <span id="feedbackEmail">dev.vaultpolicies@hemmen.lu</span></p>
+                <p><a href="https://github.com/JeffHemmen/vaultpolicies.dev/issues" target="_blank">GitHub Issues</a></p>
+            </div>
+        </div>
+        <button id="theme-toggle">💡</button>
     </header>
     <main>
         <div class="container">
             <div class="textbox-container">
-                <textarea id="input-box" class="textbox" placeholder="Enter your code here..."></textarea>
-                <div id="error-message-container" class="error-bubble hidden">Invalid input! Please remove '!' characters.</div>
+                <textarea id="input-box" class="textbox" placeholder="Enter your Vault policy here..."></textarea>
+                <div id="error-message-container" class="error-bubble hidden">Policy could not be parsed!</div>
             </div>
             <div class="textbox-container">
-                <textarea id="output-box" class="textbox" placeholder="Generated output will appear here..." readonly></textarea>
+                <textarea id="output-box" class="textbox" placeholder="Example paths and their capabilities output will appear here..." readonly></textarea>
             </div>
         </div>
-        <p class="disclaimer">Please note: This site is in early development, and there are no guarantees about the correctness of the output.</p>
-        <div class="feedback">
-            <button id="feedbackBtn">Give Feedback</button>
-            <div id="feedbackOptions" class="hidden">
-                <p>Email: <span id="feedbackEmail">feedback@vaultpolicies.dev</span></p>
-                <p><a href="https://github.com/yourusername/yourrepository/issues" target="_blank">GitHub Issues</a></p>
-            </div>
-        </div>
+        <p class="disclaimer">Please note: This site is in early development. There are no guarantees about the correctness of the output. bugs will be present. Please contribute by reporting them as you identify them.</p>
+        
     </main>
     <footer>
-        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+        <p>&copy; 2023 Jeff Hemmen Ltd. </p><p> R.C.S. Luxembourg: B261685</p>
+        <p> Share capital 13.37€</p><p>Business permit: 10125642 / 0 </p>
+        <p>Registered address: Unit 482 Block 4c, Porte de France L-4360 Esch-sur-Alzette Luxembourg</p>
+
     </footer>
     <script src="js/Capabilities.js"></script>
     <script src="js/PolicyTree.js"></script>

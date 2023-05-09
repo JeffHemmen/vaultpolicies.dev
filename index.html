@@ -23,12 +23,25 @@
             <div class="textbox-container">
                 <textarea id="input-box" class="textbox" placeholder="Enter your Vault policy here..."></textarea>
                 <div id="error-message-container" class="error-bubble hidden">Policy could not be parsed!</div>
+
+                <div class="example-paths-container">
+                    <label for="auto-generate">
+                        <input type="checkbox" id="auto-generate" name="auto-generate" checked>
+                        Auto-generate example paths
+                    </label>
+                    <textarea id="example-paths" class="textbox" placeholder="Enter example paths here..." readonly></textarea>
+                </div>
+                
+
             </div>
             <div class="textbox-container">
-                <textarea id="output-box" class="textbox" placeholder="Example paths and their capabilities output will appear here..." readonly></textarea>
+                <div id="output-tree" class="output-tree"></div>
+                <div class="output-box-container">
+                    <textarea id="output-box" class="textbox" placeholder="Evaluated paths will appear here..." readonly></textarea>
+                </div>
             </div>
         </div>
-        <p class="disclaimer">Please note: This site is in early development. There are no guarantees about the correctness of the output. bugs will be present. Please contribute by reporting them as you identify them.</p>
+        <p class="disclaimer">Please note: This site is in early development. There are no guarantees about the correctness of the output. Bugs will be present. Please contribute by reporting them as you identify them.</p>
         
     </main>
     <footer>

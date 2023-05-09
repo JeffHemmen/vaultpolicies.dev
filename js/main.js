@@ -16,9 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* RIGHT-HAND SIDE */
     function gen_output() {
-        outputBox.value = examples.join('\n');
+        
+        /* debug */
+        debug = '';
+        examples.forEach(example => {
+            debug += example + ' ';
+            debug += pt.evaluate(example) + '\n';
+        });
+        outputBox.value = debug;
+
+        /* prod */
         outputTree.innerHTML = createTree(examples);
-        console.log(examples);
     }
 
 /* INPUT */
@@ -88,12 +96,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(no_parents);
 
+        function path_and_cap_html(path, is_leaf) {
+            cap = pt.evaluate(path).capabilities;
+            res = '<div class="path-and-bits">';
+            res += '<div class="path">' + path + '</div>';
+            res += '<div class="bit-container">';
+            res += ' <span class="' + (cap.has('list') ? 'bit L' : 'bit') + '">L</span>';
+            res += ' <span class="' + (cap.has('create') ? 'bit C' : 'bit') + '">C</span>';
+            res += ' <span class="' + (cap.has('read') ? 'bit R' : 'bit') + '">R</span>';
+            res += ' <span class="' + (cap.has('update') ? 'bit U' : 'bit') + '">U</span>';
+            res += ' <span class="' + (cap.has('delete') ? 'bit D' : 'bit') + '">D</span>';
+            res += ' <span class="' + (cap.has('patch') ? 'bit P' : 'bit') + '">P</span>';
+            res += ' <span class="' + (cap.has('sudo') ? 'bit S' : 'bit') + '">S</span>';
+            res += '</div></div>';
+            return res;
+        }
+
         function generateHtml(node, depth = 0) {
             let html = '<li>';
             if (node.children.length == 0) {
-                html += node.path;
+                html += path_and_cap_html(node.path, true);
             } else {
-                html += '<details open>\n<summary>' + node.path + '</summary>\n';
+                html += '<details open>\n<summary>' + path_and_cap_html(node.path, false) + '</summary>\n';
             
                 html += '<ul>';
                 node.children.forEach(child => {
